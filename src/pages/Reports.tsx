@@ -67,34 +67,35 @@ const Reports: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-space-black relative overflow-hidden">
-      {/* Background effects */}
+      {/* Enhanced background effects */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-space-black via-space-deepBlue to-space-navy opacity-80"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_20%,rgba(120,50,255,0.1),transparent)]"></div>
-        <div className="absolute inset-0 stars-bg opacity-40"></div>
-        <div className="absolute top-20 left-1/4 w-72 h-72 rounded-full bg-purple-500/5 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 rounded-full bg-pink-500/5 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_700px_at_50%_20%,rgba(139,92,246,0.15),transparent)]"></div>
+        <div className="absolute inset-0 stars-bg opacity-50"></div>
+        <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full bg-purple-500/10 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-1/4 w-120 h-120 rounded-full bg-pink-500/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]"></div>
       </div>
       
       <Navbar />
       
       <div className="container max-w-7xl mx-auto py-8 px-4 sm:px-6 mt-20 z-10">
-        <div className="mb-8">
-          <div className="inline-block px-3 py-1 mb-4 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+        {/* Enhanced header with animation and glow effects */}
+        <div className="mb-10 animate-fade-in-up">
+          <div className="inline-block px-4 py-1.5 mb-4 rounded-full border border-purple-500/40 bg-purple-500/15 backdrop-blur-sm shadow-[0_0_15px_rgba(139,92,246,0.3)]">
             <span className="text-sm font-medium text-purple-300">Analytics Dashboard</span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Reports Dashboard</h1>
-          <p className="text-gray-400">View and analyze data across all tech clubs and activities.</p>
+          <h1 className="text-4xl font-bold tracking-tight text-white mb-3 text-shadow-glow">Reports Dashboard</h1>
+          <p className="text-gray-300 max-w-2xl">View and analyze comprehensive data across all tech clubs and activities. Get insights on membership, events, and club performance.</p>
         </div>
 
-        <div className="flex flex-wrap gap-4 justify-between mb-6">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-4 justify-between mb-8">
+          <div className="flex flex-wrap gap-3">
             <Select value={timeframe} onValueChange={setTimeframe}>
-              <SelectTrigger className="w-[180px] bg-space-navy/50 border-purple-500/20">
+              <SelectTrigger className="w-[180px] bg-space-navy/60 border-purple-500/30 focus:ring-purple-500/30 shadow-glow-sm">
                 <SelectValue placeholder="Select timeframe" />
               </SelectTrigger>
-              <SelectContent className="bg-space-navy border-purple-500/20">
+              <SelectContent className="bg-space-navy border-purple-500/30">
                 <SelectItem value="weekly">Weekly</SelectItem>
                 <SelectItem value="monthly">Monthly</SelectItem>
                 <SelectItem value="quarterly">Quarterly</SelectItem>
@@ -103,10 +104,10 @@ const Reports: React.FC = () => {
             </Select>
             
             <Select value={clubFilter} onValueChange={setClubFilter}>
-              <SelectTrigger className="w-[180px] bg-space-navy/50 border-purple-500/20">
+              <SelectTrigger className="w-[180px] bg-space-navy/60 border-purple-500/30 focus:ring-purple-500/30 shadow-glow-sm">
                 <SelectValue placeholder="Filter by club" />
               </SelectTrigger>
-              <SelectContent className="bg-space-navy border-purple-500/20">
+              <SelectContent className="bg-space-navy border-purple-500/30">
                 <SelectItem value="all">All Clubs</SelectItem>
                 <SelectItem value="ieee">IEEE</SelectItem>
                 <SelectItem value="acm">ACM</SelectItem>
@@ -116,24 +117,24 @@ const Reports: React.FC = () => {
               </SelectContent>
             </Select>
             
-            <Button variant="outline" className="flex items-center gap-2 bg-space-navy/50 border-purple-500/20 hover:bg-purple-500/20">
+            <Button variant="outline" className="flex items-center gap-2 bg-space-navy/60 border-purple-500/30 hover:bg-purple-500/20 shadow-glow-sm">
               <Filter className="h-4 w-4" />
               More Filters
             </Button>
           </div>
           
-          <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 button-shine" onClick={() => handleDownload("Complete")}>
+          <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 button-shine shadow-glow" onClick={() => handleDownload("Complete")}>
             <FileDown className="mr-2 h-4 w-4" />
             Download All Reports
           </Button>
         </div>
 
-        <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid grid-cols-4 w-full max-w-md bg-space-navy/50 border border-purple-500/20">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300">Overview</TabsTrigger>
-            <TabsTrigger value="membership" className="data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300">Membership</TabsTrigger>
-            <TabsTrigger value="events" className="data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300">Events</TabsTrigger>
-            <TabsTrigger value="clubs" className="data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-300">Clubs</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid grid-cols-4 w-full max-w-md bg-space-navy/60 border border-purple-500/30 shadow-glow-sm">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-purple-500/30 data-[state=active]:text-white">Overview</TabsTrigger>
+            <TabsTrigger value="membership" className="data-[state=active]:bg-purple-500/30 data-[state=active]:text-white">Membership</TabsTrigger>
+            <TabsTrigger value="events" className="data-[state=active]:bg-purple-500/30 data-[state=active]:text-white">Events</TabsTrigger>
+            <TabsTrigger value="clubs" className="data-[state=active]:bg-purple-500/30 data-[state=active]:text-white">Clubs</TabsTrigger>
           </TabsList>
           
           <TabsContent value="overview">
@@ -587,6 +588,88 @@ const Reports: React.FC = () => {
           </TabsContent>
         </Tabs>
       </div>
+      
+      <style jsx global>{`
+        .text-shadow-glow {
+          text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+        .shadow-glow {
+          box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        .shadow-glow-sm {
+          box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+        }
+        .glass-card {
+          background: rgba(14, 19, 36, 0.7);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(139, 92, 246, 0.2);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .cosmic-glow:hover {
+          box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+          border-color: rgba(139, 92, 246, 0.4);
+          transition: all 0.3s ease;
+        }
+        .text-gradient {
+          background: linear-gradient(to right, #8B5CF6, #EC4899);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s ease-out;
+        }
+        .stars-bg {
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
+        .bg-grid-pattern {
+          background-size: 100px 100px;
+          background-image: 
+            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        .button-shine {
+          position: relative;
+          overflow: hidden;
+        }
+        .button-shine:after {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(
+            to bottom right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          transform: rotate(45deg);
+          animation: shine 3s infinite;
+        }
+        @keyframes shine {
+          0% {
+            left: -50%;
+            top: -50%;
+          }
+          100% {
+            left: 150%;
+            top: 150%;
+          }
+        }
+      `}</style>
       
       <div className="mt-auto">
         <Footer />
