@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Card, 
@@ -24,7 +23,6 @@ import Navbar from '@/components/Navbar';
 import { BarChart as RechartsBarChart, Bar, PieChart as RechartsPieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-// Mock data for reports
 const membershipData = [
   { month: "Jan", count: 42 },
   { month: "Feb", count: 56 },
@@ -50,9 +48,6 @@ const clubData = [
   { id: 5, name: "STIC", members: 60, events: 6, lastEvent: "2023-11-15" },
 ];
 
-// Custom color palette for the charts
-const COLORS = ['#8B5CF6', '#EC4899', '#6366F1', '#F472B6', '#6EE7B7', '#10B981'];
-
 const Reports: React.FC = () => {
   const { toast } = useToast();
   const [timeframe, setTimeframe] = useState("monthly");
@@ -67,7 +62,6 @@ const Reports: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-space-black relative overflow-hidden">
-      {/* Enhanced background effects */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-space-black via-space-deepBlue to-space-navy opacity-80"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_700px_at_50%_20%,rgba(139,92,246,0.15),transparent)]"></div>
@@ -80,7 +74,6 @@ const Reports: React.FC = () => {
       <Navbar />
       
       <div className="container max-w-7xl mx-auto py-8 px-4 sm:px-6 mt-20 z-10">
-        {/* Enhanced header with animation and glow effects */}
         <div className="mb-10 animate-fade-in-up">
           <div className="inline-block px-4 py-1.5 mb-4 rounded-full border border-purple-500/40 bg-purple-500/15 backdrop-blur-sm shadow-[0_0_15px_rgba(139,92,246,0.3)]">
             <span className="text-sm font-medium text-purple-300">Analytics Dashboard</span>
